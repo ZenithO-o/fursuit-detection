@@ -1,0 +1,12 @@
+item {
+    id: 1
+    name: 'fursuit'
+}
+item {
+    id: 2
+    name: 'fursuit_head'
+}
+item {
+    id: 3
+    name: 'fursuit_partial'
+}
