@@ -130,6 +130,7 @@ dmypy.json
 
 # Other files (mostly for testing stuff inside repository)
 .vscode/
-.models/
+models/
 images/*
 export/*
+optimization/

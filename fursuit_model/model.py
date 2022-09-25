@@ -33,10 +33,13 @@ class FursuitModel:
         
         return detections
     
-    def visualize_detections(self, img: np.ndarray, detections: dict, threshold: float = 0.5) -> np.ndarray:
+    def visualize_detections(self, img: np.ndarray, detections: dict, threshold: float = 0.5, in_place: bool = False) -> np.ndarray|None:
         
         # Make copy for viz utils (viz utils makes in-place changes to np array)
-        img_np_with_detections = img.copy()
+        if in_place:
+            img_np_with_detections = img
+        else:
+            img_np_with_detections = img.copy()
         
         viz_utils.visualize_boxes_and_labels_on_image_array(
             img_np_with_detections,
@@ -49,7 +52,8 @@ class FursuitModel:
             min_score_thresh=threshold,
             agnostic_mode=False)
         
-        return img_np_with_detections
+        if not in_place:
+            return img_np_with_detections
     
     def crop_detections(self, img: np.ndarray, detections: dict, threshold: float = 0.5) -> tuple:
         scores = detections['detection_scores']
