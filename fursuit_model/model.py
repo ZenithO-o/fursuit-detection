@@ -10,6 +10,8 @@ from object_detection.utils import visualization_utils as viz_utils
 MODEL_PATH = os.path.join(pathlib.Path(__file__).parent.resolve(), 'model') 
 
 class FursuitModel:
+    """A simple wrapper for running the Fursuit Object Detection Model
+    """
     def __init__(self) -> None:
         self._model = tf.saved_model.load(os.path.join(MODEL_PATH, 'saved_model')) 
         self._category_index = label_map_util.create_category_index_from_labelmap(os.path.join(MODEL_PATH, 'label_map.pbtxt') , use_display_name=True)
@@ -33,7 +35,7 @@ class FursuitModel:
         
         return detections
     
-    def visualize_detections(self, img: np.ndarray, detections: dict, threshold: float = 0.5, in_place: bool = False) -> np.ndarray|None:
+    def visualize_detections(self, img: np.ndarray, detections: dict, threshold: float, in_place: bool = False) -> np.ndarray|None:
         
         # Make copy for viz utils (viz utils makes in-place changes to np array)
         if in_place:
@@ -55,7 +57,7 @@ class FursuitModel:
         if not in_place:
             return img_np_with_detections
     
-    def crop_detections(self, img: np.ndarray, detections: dict, threshold: float = 0.5) -> tuple:
+    def crop_detections(self, img: np.ndarray, detections: dict, threshold: float) -> tuple:
         scores = detections['detection_scores']
         boxes = detections['detection_boxes']
         classes = detections['detection_classes']

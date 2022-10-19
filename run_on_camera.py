@@ -100,10 +100,12 @@ Arguments:
         ret, frame = cap.read()
         
         np_frame = np.array(frame)
-
-        result = model.run_model(np_frame)
-        model.visualize_detections(np_frame, result, T, True)
-    
+        try:
+            result = model.run_model(np_frame)
+            model.visualize_detections(np_frame, result, T, True)
+        except ValueError:
+            print('An image was not detected from your camera. Please make sure your settings are correct!')
+            break
         cv2.imshow('Fursuit Detector', np_frame)
         
         if cv2.waitKey(10) & 0xFF == ord('q'):
