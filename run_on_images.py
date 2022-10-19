@@ -26,7 +26,7 @@ def main(argv: list[str]):
 
     arg_help = '''Usage:
     python run_on_images.py [options] [file ...]
-  
+
 Arguments:
     -h  --help
         how to use this script

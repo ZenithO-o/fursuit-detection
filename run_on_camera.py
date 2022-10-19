@@ -23,7 +23,7 @@ def main(argv: list[str]):
     help_text = '''Run the fursuit model with your default system's camera!
 Note: Press 'Q' to quit viewing\n\n'''
     arg_help = '''Usage: 
-    python run_with_camera.py [options]
+    python run_with_camera.py [options] [device]
   
 Arguments:
     -h  --help
@@ -70,6 +70,21 @@ Arguments:
                 print(arg_help)
                 sys.exit(2)
     
+        # Checks if any additional arguments are passed
+    if len(args) > 1:
+        arg_help = "Error: Too many devices passed into args (Only 1 allowed)\n\n" + arg_help
+        print(arg_help)
+        sys.exit(2)
+    elif len(args) != 0:
+        try:
+            device = int(args[0])
+        except ValueError:
+            arg_help = "Error: Device value incorrect (must be int)\n\n" + arg_help
+            print(arg_help)
+            sys.exit(2)
+    else:
+        device = 0
+    
     if VERBOSE:
         print(f"Fullscreen: {FULLSCREEN}")
         print(f"Threshold: {T}")
@@ -88,7 +103,7 @@ Arguments:
     if VERBOSE: print('-'*15)
     
     # Get capture
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(device)
     cap.set(3, 1920)
     cap.set(3, 1080)
     # Sets window to fullscreen :)
@@ -114,8 +129,7 @@ Arguments:
             break
         else:
             pass
-            
-    
+
 
 if __name__ == "__main__":
     main(sys.argv)
