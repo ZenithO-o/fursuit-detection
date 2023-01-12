@@ -13,10 +13,6 @@ Hey there! This is a project I have been working on a while to detect fursuits i
 
 ### Other links:
 
-[My Website](https://example.com)
-
-
-
 ## **How to Use**
 Two basic scripts are provided, `run_on_images.py` and `run_with_camera.py`. These two files have arguments associated with them.
 
@@ -58,8 +54,7 @@ Here's the best step-by-step instructions I can give:
 4. If you run into some dependency errors, try running `pip install --no-deps -r requirements.txt` after finishing the object detection installation guide.
 5. Question why you did this in the first place.
 
-AFAIK, there are some [issues](https://stackoverflow.com/questions/71759248/importerror-cannot-import-name-builder-from-google-protobuf-internal) with installing the `object_detection` dependencies (yay version conflicts and backwards compatibility), so if this process is not working, I am sure there are modern guides to installing the object detection library for tensorflow. If you cannot get this to work and just want to use mess around with the model, consider using [my website](https://example.com) instead! :D
-
+AFAIK, there are some [issues](https://stackoverflow.com/questions/71759248/importerror-cannot-import-name-builder-from-google-protobuf-internal) with installing the `object_detection` dependencies (yay version conflicts and backwards compatibility), so if this process is not working, I am sure there are modern guides to installing the object detection library for tensorflow.
 
 
 ## **Todo (in order of importance)**
